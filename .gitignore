@@ -1,0 +1,3 @@
+nasm-gcc-container/*
+!nasm-gcc-container/nasm-gcc
+nasm-gcc-container/nasm-gcc/Dockerfile
