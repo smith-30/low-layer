@@ -6,11 +6,12 @@ section .text
 global _start
 _start:
     ; この1122...　は16進表記
-    mov rax, 0x1122334455667788
+    mov rax, 0x1a22334455667788
 
     mov rdi, 1
     mov rdx, 1 ; 入出力の間、dataを格納する(書き込むバイト数)
     mov rcx, 64 ; loopの回数を保持するのに使う
+    ; Todo: ↓ 4bitとかよくわからん
     ; 4bitを16進の1桁として出力していくために
     ; シフトと論理和(AND)によって1桁のデータを得る。
     ; その結果は'codes'配列へのオフセット
