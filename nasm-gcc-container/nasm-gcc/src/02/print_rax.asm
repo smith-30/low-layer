@@ -24,6 +24,7 @@ _start:
     sar rax, cl
     and rax, 0xf
 
+    ; 
     lea rsi, [codes + rax]
     mov rax, 1
 
