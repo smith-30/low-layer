@@ -16,3 +16,26 @@ mov rdi, 0より実行効率がいいらしい
 rdiはsyscall実行時に値が第一引数として参照される模様
 rdi, rsi, rdx, ...
 0
+
+### ascii　コードチェック
+
+```
+$ man ascii
+```
+
+### difference between sar and shr
+
+- sar Shift arithmetic right.(算術シフト)
+    - 符号ビットを除いてシフトするもので、空いたビット位置すべてに左シフトの時は０、**右シフトの時は符号ビットと同じものが入る**
+
+- shr Shift logical right.(論理シフト)
+    - 符号ビット（先頭ビット，第１５ビット，最も左のビット）を含めてシフトするもので、空いたビット位置すべてに０が入る
+
+![image](./arithRight.gif)
+
+intel's volume 1, 5.1.5
+
+### 数を10進`以外`の方法でnasmが理解できるように書くにはどうするか
+
+https://www.nasm.us/doc/nasmdoc3.html#section-3.4.1
+参照
