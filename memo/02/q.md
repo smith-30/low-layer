@@ -48,3 +48,24 @@ https://www.nasm.us/doc/nasmdoc3.html#section-3.4.1
 - jz 
     - jump if zero
 
+### list of each test
+
+Todo
+
+```
+section .data
+test: dq -1
+
+section .text
+    mov byte[test], 1
+    ; 01 FF FF FF FF FF FF FF 
+
+    mov word[test], 1
+    ; 01 00 FF FF FF FF FF FF 
+
+    mov dword[test], 1
+    ; 01 00 00 00 FF FF FF FF
+
+    mov qword[test], 1
+    ; 01 00 00 00 00 00 00 00
+```
