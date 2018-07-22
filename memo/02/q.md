@@ -39,3 +39,12 @@ intel's volume 1, 5.1.5
 
 https://www.nasm.us/doc/nasmdoc3.html#section-3.4.1
 参照
+
+### je, jz
+
+- je
+    - jump if equal
+
+- jz 
+    - jump if zero
+
