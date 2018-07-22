@@ -26,6 +26,8 @@ iterate:
                 ; (cl レジスタは rcxの最下位バイト)
 
     and rax, 0xf ; 下位4ビット以外の値をクリア
+    ; Todo
+    ; 繰り返しで入ってくる値はアセンブリがよしなにシフト?してくれる?
     lea rsi, [codes + rax] ; 16 進数の文字コードを取得
 
     mov rax, 1 ; write
