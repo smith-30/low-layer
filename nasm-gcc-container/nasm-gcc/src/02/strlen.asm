@@ -6,7 +6,7 @@ test_string: db "abcdef", 0 ; 文字列の終わりを示す. 0を使ったも�
                             ; null-terminated string と呼ばれる
 section .text
 
-strlen:                 ; この関数はただ1個の引数をrdiから受け取る
+strlen:                 ; この関数はただ1個の引数をrdiから受け取る
                         ; (われわれの規約による)
     xor rax, rax        ; raxに文字列の長さが入る。最初にゼロで初期化
                         ; しなければランダムな値になってしまう
@@ -33,4 +33,4 @@ _start:
     call strlen
     mov rdi, rax
     mov rax, 60
-    syscall
+    syscall ; call `echo $?` on your terminal. exp 6
