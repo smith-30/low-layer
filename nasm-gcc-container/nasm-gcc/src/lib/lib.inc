@@ -5,24 +5,69 @@ exit:
     xor rdi, rdi
     syscall
 
-string_length:                 ; この関数はただ1個の引数をrdiから受け取る
-                        ; (われわれの規約による)
-    xor rax, rax        ; raxに文字列の長さが入る。最初にゼロで初期化
-                        ; しなければランダムな値になってしまう
-
-.loop:                      ; start main loop
-    cmp byte [rdi+rax], 0   ; 現在の文字/記号が終結のヌルかどうかを調べる
-                            ; ここで `byte` 修飾が絶対に必要
-                            ; (cmpのオペランドは左右必ず同じサイズ)
-                            ; 右側のオペランドがイミディエイトでサイズの情報がないので、
-                            ; メモリから何バイト取り出してゼロと比較すればよいのか
-                            ; `byte` がなければ不明である
-
-    je .end ; if find null jump
-
+string_length:
+    xor rax, rax
+.loop:                      
+    cmp byte [rdi+rax], 0
+    je .end
     inc rax ; else jump next string (count up)
-
     jmp .loop
-
 .end:
     ret ; `ret` に到着したとき、raxに戻り値が入っている
+
+print_string:
+    push rdi
+    call string_length
+    pop rsi ; Todo why pop rsi? get first buffer address
+    mov rdx, rax ; set string len
+    mov rax, 1
+    mov rdi, 1
+    syscall
+    ret
+
+
+print_char:
+    push rdi
+    mov rdi, rsp      ; why stack pointer? -> pushしてその値をすぐに使っている?
+    call print_string
+    pop rdi
+    ret
+
+
+print_newline:
+   mov rdi, 10
+   jmp print_char
+
+print_uint:
+    mov rax, rdi
+    mov rdi, rsp
+    push 0
+    sub rsp, 16
+
+    dec rdi
+    mov r8, 10
+
+.loop:
+    xor rdx, rdx
+    div r8
+    or dl, 0x30
+    dec rdi
+    mov [rdi], dl
+    test rax, rax
+    jnz .loop
+
+    call print_string
+
+    add rsp, 24
+    ret 
+   
+
+print_int:
+    test rdi, rdi
+    jns print_uint
+    push rdi
+    mov rdi, '-'
+    call print_char
+    pop rdi
+    neg rdi
+    jmp print_uint
