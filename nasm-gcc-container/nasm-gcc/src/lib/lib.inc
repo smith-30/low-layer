@@ -21,6 +21,8 @@ print_string:
     pop rsi ; Todo why pop rsi? get first buffer address
             ; write 用に戻している?
             ; 書き込むバイトシーケンスの先頭バイトが使われる、rsiは勝手にどこかでstackされている?
+            ; なるほど、stackに詰められているアドレスをそのまま受け取ってるのか
+            ; なので、print_newlineから見れば、10をスタックに置いたときのアドレスが入っている
     mov rdx, rax ; set string len
     mov rax, 1
     mov rdi, 1
@@ -30,11 +32,10 @@ print_string:
 
 print_char:
     push rdi
-    mov rdi, rsp      ; why stack pointer? -> 退避
+    mov rdi, rsp      ; why stack pointer? -> 退避させた後そのアドレスをすぐに突っ込んでいる
     call print_string
     pop rdi
     ret
-
 
 print_newline:
    mov rdi, 10
