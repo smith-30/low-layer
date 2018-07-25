@@ -41,6 +41,16 @@ print_newline:
    mov rdi, 10
    jmp print_char
 
+
+; 8バイト長の符号なし整数を10進フォーマットで出力する
+; スタック上にバッファを作成し、そこに除算の結果を格納する
+; 実際にはrspからバッファサイズを引くことでスタックにメモリを割り当てる
+; 剰余を10で割り、その商に対応する10進桁数をバッファ内にいれる。
+; それぞれの桁数をASCIIコードに変換することを忘れないように(0x04 -> 0x34)
+
+; Todo why trans ascii?
+; 8バイト長の崩し方というかそこら辺理解してない
+; rspの使い方もわかんないし
 print_uint:
     mov rax, rdi
     mov rdi, rsp
@@ -53,7 +63,7 @@ print_uint:
 .loop:
     xor rdx, rdx
     div r8
-    or dl, 0x30
+    or dl, 0x30 ; 0?
     dec rdi
     mov [rdi], dl
     test rax, rax
@@ -64,13 +74,13 @@ print_uint:
     add rsp, 24
     ret 
    
-
+; 符号付き8バイト長の整数を10進フォーマットで出力する
 print_int:
     test rdi, rdi
     jns print_uint
     push rdi
-    mov rdi, '-'
+    mov rdi, '-' ; print `-` for -100
     call print_char
     pop rdi
-    neg rdi
+    neg rdi ; 符号の反転
     jmp print_uint
