@@ -19,6 +19,8 @@ print_string:
     push rdi
     call string_length
     pop rsi ; Todo why pop rsi? get first buffer address
+            ; write 用に戻している?
+            ; 書き込むバイトシーケンスの先頭バイトが使われる、rsiは勝手にどこかでstackされている?
     mov rdx, rax ; set string len
     mov rax, 1
     mov rdi, 1
@@ -28,7 +30,7 @@ print_string:
 
 print_char:
     push rdi
-    mov rdi, rsp      ; why stack pointer? -> pushしてその値をすぐに使っている?
+    mov rdi, rsp      ; why stack pointer? -> 退避
     call print_string
     pop rdi
     ret
