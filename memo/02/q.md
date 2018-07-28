@@ -113,3 +113,85 @@ raxだけ最下位ワードの上位バイトにアクセスできる(ah)
 - mov r9, [r9 + 8*rax] ○
 - mov [r8+r7+10], 6 ○
 - mov [r8+r7+10], r6 ○
+
+### 呼び出し先退避レジスタ
+
+p33
+
+rbx, rbp, rsp, r12-15
+
+### 呼び出し元退避レジスタ
+
+呼び出し前に退避、呼び出し後に復旧
+
+上記7個以外
+
+### ripレジスタの意味
+
+rip is Instruction Pointer Register
+
+ripには次に実行すべき命令のアドレスが格納される
+プログラマがアクセス可能
+
+### what is SF flag
+
+算術命令で結果がマイナス値だったときにセットされる
+
+### what is ZF flag
+
+算術命令をしたときに結果が0だったときにセット
+
+### explain under each operation
+
+- sar
+    - 左ビットシフト
+- shr
+    - 右ビットシフト
+- xor
+    - 排他的論理和
+- jmp
+    - 定義したラベルへジャンプさせる
+- ja, jb, その他
+    - jump if above
+    - jump if below
+    - jg 
+        - jump if greater
+    - jl 
+        - jump if less
+    - jae 
+        - jump if above or equal
+    - jle 
+        - jump if less or equal
+- cmp
+    - オペランド比較, compare
+- mov
+    - データ転送
+- inc, dec
+    - 加算, 減算
+- add
+    - 足し算
+- imul, mul
+    - 符号なしかけ算
+    - かけ算
+- sub
+    - 引き算
+- idiv, div
+    - 符号なし割り算
+    - 割り算
+- call, ret
+    - プロシージャ呼び出し
+    - 復帰
+- push, pop
+    - push: push stack
+    - pop: pop from stack
+- neg
+    - 符号の反転
+
+### ラベルとは何か、サイズはあるのか
+
+処理のスコープを表す
+プログラム全体に定義できるグローバルラベル
+.から始まるローカルラベルがある
+
+Todo サイズについて
+
