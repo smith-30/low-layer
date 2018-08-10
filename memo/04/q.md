@@ -33,3 +33,23 @@ https://www.slideshare.net/Sajith3D2010/memory-mapping-cache
 Hit って感じかな
 ![image](./2-way-set-associative-cache.png)
 OffsetはTodo
+
+### 仮想メモリの領域とは
+
+
+### プログラムの実行コードをその実行中に書き換えようとしたらどうなるか
+
+
+### what is forbidden address
+
+
+### what is canonical address
+
+
+### what is translation table
+
+
+### what is page frame
+
+
+### what is page frame
