@@ -14,6 +14,27 @@
 今回でいうと、.asmファイルを受け取り
 後続処理が解釈しやすい.asmファイルを出力する
 
+```
+%define cat_count 42
+
+mov rax, cat_count
+```
+
+```
+$ nasm -E define_cat_count.asm
+%line 2+1 define_cat_count.asm
+
+mov rax, 42
+```
+
+プリプロセスにより
+cat_count　が定義した42で置き換えられる
+
+**NASMでは既存のプリプロセッサシンボル(広義にいう変数シンボル)を再定義できる**
+
+single line のマクロは `%define` が使われる
+マクロ内で他のマクロを呼ぶこともできる
+
 ### コンパイラ
 
 前段で処理したソースファイルをマシン語の命令に変換し

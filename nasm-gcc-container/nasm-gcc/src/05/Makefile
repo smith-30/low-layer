@@ -8,5 +8,8 @@ build:
 	ld -o $(target) $(target).o && \
 	rm $(target).o
 
+prepro:
+	nasm -E $(target).asm
+
 clean:
 	rm *.o
