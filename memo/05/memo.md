@@ -58,3 +58,35 @@ single line のマクロは `%define` が使われる
 プロセス実行時のアドレスに受け取ったファイルの命令など
 メタデータを書き込む
 
+### リンク
+
+```
+$ ld -o [binary] file.o
+```
+
+ldというリンカを呼び出す
+
+#### ELF Executable and Linkable Format
+
+実行とリンクが可能なフォーマット
+
+3種類のファイルをサポート
+
+- 再配置可能なオブジェクトファイル
+    - コンパイラが生成する `.o` ファイル
+    - プログラムの各部に決定的なアドレスを割り当てて、モジュール間の参照が適切に行えるようにする
+- 実行可能なオブジェクトファイル
+    - そのままメモリにロードして実行できるファイル
+        - コードとデータとユーティリティ情報をもったストレージ
+- 共有オブジェクトファイル
+    - `必要なとき` メインプログラムがロードできるファイル
+    - 動的にリンクできるので動的ライブラリとも呼ばれる
+    - windowsでは`.dll`, *nixでは `***.so`で終わることが多い(shared object)
+
+リンカは、再配置可能なオブジェクトファイルの集合を受け取って
+`1個` の実行可能な(または共有可能な)オブジェクトファイルを作る
+
+### *nix 
+
+just means operating systems that are like the old workhorse Unix. 
+Some examples include Linux, FreeBSD, and Mac OS X (its kernel, Darwin, is based on BSD).
