@@ -90,3 +90,4 @@ ldというリンカを呼び出す
 
 just means operating systems that are like the old workhorse Unix. 
 Some examples include Linux, FreeBSD, and Mac OS X (its kernel, Darwin, is based on BSD).
+
