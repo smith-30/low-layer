@@ -77,6 +77,9 @@ objdump -h `ファイル名`
 ```
 で見れる
 
+**参考**
+http://www.ertl.jp/~takayuki/readings/info/no02.html
+
 ### .bss
 
 セクションの１つ
