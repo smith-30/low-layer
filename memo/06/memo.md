@@ -27,3 +27,9 @@ CPUは IDT (Interrupt Descriptor Table) を参照する
 そのアドレスとサイズは`idtr`に保存される
 
 64bit分がオフセットで確保されるから本の図のインデックスは`79`になっている
+
+### DPL
+
+Descriptor Privilege Level
+
+int 命令を行う特権コードの制御を行うためのもの
