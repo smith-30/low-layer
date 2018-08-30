@@ -33,3 +33,24 @@ CPUは IDT (Interrupt Descriptor Table) を参照する
 Descriptor Privilege Level
 
 int 命令を行う特権コードの制御を行うためのもの
+
+### システムコール
+
+CPU <-> OS <-> アプリケーション
+
+システムコールは OSとアプリケーションをつなぐ役目を持つ
+
+### モデル固有レジスタ MSR Model-Specific Register
+
+新しいCPUに積まれた新しいレジスタのこと
+それらを総称してMSRと呼ぶ
+こららの一般的なレジスタを書き換えるときは 下記を使う
+
+- rdmsr
+    - 読み出し
+    - MSR番号をecxで受け取り、そのレジスタから読んだ値をedx:eaxで返す
+- wrmsr
+    - 書き出し
+    - MSR番号をecxで受け取り、edx:eaxから取り出した値をそのレジスタに書く
+
+Todo なぜsyscallはMSRに依存するのか
