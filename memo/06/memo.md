@@ -53,4 +53,4 @@ CPU <-> OS <-> アプリケーション
     - 書き出し
     - MSR番号をecxで受け取り、edx:eaxから取り出した値をそのレジスタに書く
 
-Todo なぜsyscallはMSRに依存するのか
+Todo なぜ syscall は MSR に依存するのか
