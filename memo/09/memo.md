@@ -71,3 +71,20 @@ int sum
 // こちらが正しい
 int sum = 0;
 ```
+
+### トークン演算子
+
+変数の値を変数名から取れる
+シンボルの値を動的にセットできたりする
+
+php の`$$`とかこれ使ってるんだろうな
+
+```c
+#define x1 "hello"
+#define x2 "world"
+
+#define str(i) x##i
+
+puts(str(1)); // str(1) -> x1
+puts(str(2)); // str(2) -> x2
+```
